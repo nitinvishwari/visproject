@@ -16,7 +16,7 @@ var categorical = ["state",  "consent_cases", "consent_deaths", "submission_date
 
 function Line_Chart(){
   var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
+    width = 1260 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -33,7 +33,7 @@ d3.csv("static/data/covid_us.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%m/%d/%Y")(d.date), value : d.value }
+    return {  date : d3.timeParse("%Y-%m-%d")(d.submission_date), value : d.tot_cases }
   },
 
   // Now I can use this dataset:
